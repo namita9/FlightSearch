@@ -66,7 +66,7 @@ The main application file (`app.py`) contains the following key components:
 - Route for handling search requests (`/search`)
 - Integration with the external API
 
-  ![image](https://github.com/user-attachments/assets/73c263c3-245f-4df3-b91f-8b8f966a3aaf)
+
 
 
 ### `index.html`
@@ -74,5 +74,9 @@ The main application file (`app.py`) contains the following key components:
 The HTML template (`index.html`) includes:
 
 - A form for user input (origin, destination, cabin class)
+    ![image](https://github.com/user-attachments/assets/73c263c3-245f-4df3-b91f-8b8f966a3aaf)
+  
 - A container for displaying search results
+  
+![image](https://github.com/user-attachments/assets/2c61b554-664a-4e0f-96c9-931aa79d9df5)
 
