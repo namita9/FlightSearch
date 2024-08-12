@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flight Search</title>
+    <link rel="stylesheet" href="/static/style.css">
+</head>
+<body>
+    <div class="container">
+        <h1>Flight Search</h1>
+        <form id="searchForm">
+            <label for="origin">Origin:</label>
+            <select id="origin" name="origin">
+                <option value="JFK">JFK</option>
+                <option value="DEL">DEL</option>
+                <option value="SYD">SYD</option>
+                <option value="BOM">BOM</option>
+                <option value="BNE">BNE</option>
+                <option value="BLR">BLR</option>
+            </select>
+
+            <label for="destination">Destination:</label>
+            <select id="destination" name="destination">
+                <option value="JFK">JFK</option>
+                <option value="DEL">DEL</option>
+                <option value="SYD">SYD</option>
+                <option value="LHR">LHR</option>
+                <option value="CDG">CDG</option>
+                <option value="DOH">DOH</option>
+                <option value="SIN">SIN</option>
+            </select>
+
+            <label for="cabin">Cabin:</label>
+            <select id="cabin" name="cabin">
+                <option value="Economy">Economy</option>
+                <option value="Business">Business</option>
+                <option value="First">First</option>
+            </select>
+
+            <button type="submit">Search</button>
+        </form>
+
+        <div id="results" style="display: none;"></div>
+    </div>
+    
+    <script>
+        document.getElementById('searchForm').addEventListener('submit', function(event) {
+            event.preventDefault();
+       
+            const mockData = {
+                data: [
+                    {
+                        partner_program: "KLM",
+                        min_business_miles: "53500",
+                        min_business_tax: "$189",
+                        min_economy_miles: "N/A",
+                        min_economy_tax: "N/A",
+                        min_first_miles: "N/A",
+                        min_first_tax: "N/A",
+                        date_range: "2024-07-09 - 2024-10-07"
+                    },
+                    {
+                        partner_program: "Qantas",
+                        min_business_miles: "144600",
+                        min_business_tax: "$177",
+                        min_economy_miles: "55200",
+                        min_economy_tax: "$158",
+                        min_first_miles: "N/A",
+                        min_first_tax: "N/A",
+                        date_range: "2024-07-09 - 2024-10-07"
+                    }
+                ]
+            };
+       
+            const resultsDiv = document.getElementById('results');
+            resultsDiv.innerHTML = '';
+            resultsDiv.style.display = 'flex'; // Show results div when data is received
+       
+            if (mockData.data && mockData.data.length) {
+                mockData.data.forEach(item => {
+                    const cardHTML = `
+                        <div class="result-card" style="border: 1px solid #ccc; padding: 10px; margin: 10px; width: 200px; text-align: center;">
+                            <img src="logo.png" alt="logo" style="width: 50px; height: 50px;"> <!-- Replace with actual logo path -->
+                            <h3>${item.partner_program}</h3>
+                            <p>${origin} → ${destination}</p>
+                            <p class="subtext">Date: ${item.date_range || 'N/A'}</p>
+                            <p class="highlight">${item.min_business_miles || 'N/A'} <span class="subtext">+ ${item.min_business_tax || 'N/A'}</span></p>
+                            <p class="highlight">${item.min_economy_miles || 'N/A'} <span class="subtext">+ ${item.min_economy_tax || 'N/A'}</span></p>
+                            <p class="highlight">${item.min_first_miles || 'N/A'} <span class="subtext">+ ${item.min_first_tax || 'N/A'}</span></p>
+                        </div>
+                    `;
+                    resultsDiv.innerHTML += cardHTML;
+                });
+            } else {
+                resultsDiv.innerHTML = '<p>No results found. Try another search route.</p>';
+            }
+       });
+    </script>
+    
+    
+</body>
+</html>
