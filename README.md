@@ -22,7 +22,7 @@ This Flask-based web application allows users to search for flight availability 
 
 ## Installation
 
-1. Clone this repository: git clone https://github.com/your-username/flight-search-app.git
+1. Clone this repository: git clone https:[//github.com/your-username/flight-search-app.git](https://github.com/namita9/FlightSearch/blob/main/FlightSearch/app.py)
 2.  Navigate to the project directory: cd flight-search-app
 3.  Install the required dependencies: pip install flask requests
 
